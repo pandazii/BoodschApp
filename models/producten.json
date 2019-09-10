@@ -1,22 +1,28 @@
 [
     {
       "product": "Banaan",
-      "prijs": "0,99"
+      "prijs": "0.99",
+      "beschrijving": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.",
+      "product_afbeelding": ""
     },
     {
         "product": "Kiwi",
-        "prijs": "0,99"
+        "prijs": "0.99",
+        "beschrijving": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
     },
     {
-        "product": "Ramesh",
-        "prijs": "Hackensack"
+        "product": "Appel",
+        "prijs": "0.99",
+        "beschrijving": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
     },
     {
-        "product": "Ramesh",
-        "prijs": "Hackensack"
+        "product": "Peer",
+        "prijs": "0.99",
+        "beschrijving": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
     },
     {
-        "product": "Ramesh",
-        "prijs": "Hackensack"
+        "product": "Meloen",
+        "prijs": "0.99",
+        "beschrijving": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
     }
 ]

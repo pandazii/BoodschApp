@@ -1,1 +1,24 @@
-<h1>BoodschApp</h1>
+<div class="products">
+
+    <div class="card" ng-repeat="x in producten track by $index">
+        <img src="{{x.product_afbeelding}}" alt="Fruit">
+        <h1>{{x.product}}</h1>
+        <p class="price">{{x.prijs}}</p>
+        <p>{{x.beschrijving}}</p>
+        Aantal:&nbsp;<input type="number" min="1" max="40"
+            data-ng-model="x.aantal">
+        <p><button type="button" ng-click="addProductsToList(x)">Toevoegen</button></p>
+    </div>
+
+</div>
+
+<div class="product-list">
+
+    <h2>Boodschappen lijst</h2>
+
+    <div ng-repeat="x in list">
+        {{x.product}}
+        {{x.aantal}}
+        {{x.prijs*x.aantal}}
+    </div>
+</div>

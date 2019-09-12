@@ -1,12 +1,11 @@
 <div class="products">
 
     <div class="card" ng-repeat="x in producten track by $index">
-        <img src="{{x.product_afbeelding}}" alt="Fruit">
+        <!-- <img src="{{x.product_afbeelding}}" alt="Fruit"> -->
         <h1>{{x.product}}</h1>
         <p class="price">{{x.prijs}}</p>
         <p>{{x.beschrijving}}</p>
-        Aantal:&nbsp;<input type="number" min="1" max="40"
-            data-ng-model="x.aantal">
+        Aantal:&nbsp;<input type="number" min="1" max="40" data-ng-model="x.aantal">
         <p><button type="button" ng-click="addProductsToList(x)">Toevoegen</button></p>
     </div>
 
@@ -16,9 +15,37 @@
 
     <h2>Boodschappen lijst</h2>
 
-    <div ng-repeat="x in list">
-        {{x.product}}
-        {{x.aantal}}
-        {{x.prijs*x.aantal}}
+    <div ng-repeat="x in list track by $index">
+        <div ng-if="x.done == false">
+            <label for="{{$index}}" class="done-{{x.done}}">{{x.product}}</label>
+            {{x.aantal}}
+            {{x.prijs*x.aantal | number : 2}}
+            <svg ng-click="list.splice($index, 1)" style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#000000"
+                    d="M3,16.74L7.76,12L3,7.26L7.26,3L12,7.76L16.74,3L21,7.26L16.24,12L21,16.74L16.74,21L12,16.24L7.26,21L3,16.74M12,13.41L16.74,18.16L18.16,16.74L13.41,12L18.16,7.26L16.74,5.84L12,10.59L7.26,5.84L5.84,7.26L10.59,12L5.84,16.74L7.26,18.16L12,13.41Z" />
+            </svg>
+            <input id="{{$index}}" ng-model="x.done" type="checkbox">
+
+        </div>
+
+        <br>
+        <br>
+
+        <!-- Striked products -->
+        <div ng-if="x.done == true">
+            <input type="checkbox" ng-model="x.done">
+            <label for="{{$index}}" class="striked">{{x.product}}</label>
+            {{x.aantal}}
+            {{x.prijs*x.aantal | number : 2}}
+            <svg ng-click="list.splice($index, 1)" style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="#000000"
+                    d="M3,16.74L7.76,12L3,7.26L7.26,3L12,7.76L16.74,3L21,7.26L16.24,12L21,16.74L16.74,21L12,16.24L7.26,21L3,16.74M12,13.41L16.74,18.16L18.16,16.74L13.41,12L18.16,7.26L16.74,5.84L12,10.59L7.26,5.84L5.84,7.26L10.59,12L5.84,16.74L7.26,18.16L12,13.41Z" />
+            </svg>
+        </div>
+
     </div>
+
+    <br>
+
+
 </div>

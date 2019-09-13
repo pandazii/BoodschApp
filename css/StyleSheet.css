@@ -1,5 +1,5 @@
 body {
-    background-color: coral;
+    background-color: lightblue;
 }
 
 .card {
@@ -34,16 +34,13 @@ body {
 
 .products {
     /* border: 1px solid black; */
-    width: 50%;
     overflow: hidden;
     float: left;
-
 }
 
 .product-list {
     /* border: 1px solid black; */
-    width: 40%;
-    float: right;
+    float: left;
 }
 
 .done-true {
@@ -54,4 +51,38 @@ body {
 .striked {
     text-decoration: line-through;
     color: grey;
+}
+
+.product-list {
+    float: left;
+    padding: 10px;
+}
+
+.shopping-list {
+    float: right;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    cursor: pointer;
+}
+
+td, th {
+    border: 1px solid white;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+.wrapper {
+    width: 60%;
+    margin: auto;
 }

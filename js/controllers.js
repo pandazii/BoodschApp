@@ -15,7 +15,7 @@ angular.module('boodschapp')
                 console.log("fout bij het ophalen van de producten" + error)
             })
         }
-
+        
         // sorteer producten in de boodschappenlijst op product naam
         $scope.sortShoppingListProductName = function () {
             if (shoppingListOrderd) {

@@ -31,7 +31,7 @@
                         prijs</th>
                     <th>Aantal</th>
                 </tr>
-                <tr ng-repeat="x in shoppingList track by $index">
+                <tr class="slideIn" ng-repeat="x in shoppingList track by $index">
                     <td for="{{$index}}" class="done-{{x.done}}">{{x.product}}</td>
                     <td>&euro;&nbsp;{{x.prijs*x.aantal | number : 1}}</td>
                     <td>{{x.aantal}}</td>

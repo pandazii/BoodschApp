@@ -18,19 +18,19 @@ angular.module('boodschapp')
 
         // sorteer producten in de boodschappenlijst op product naam
         $scope.sortShoppingListProductName = function () {
-            if(shoppingListOrderd){
+            if (shoppingListOrderd) {
                 $scope.shoppingList = $filter('orderBy')($scope.shoppingList, '-product');
                 $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'done');
                 shoppingListOrderd = false;
-            }else{
+            } else {
                 $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'product');
                 $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'done');
                 shoppingListOrderd = true;
-            }  
+            }
         }
 
         // Plaats afgevinkte producten in de boodschappenlijst onderaan.
-        $scope.checkboxChanged = function(){
+        $scope.checkboxChanged = function () {
             $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'done');
         }
 
@@ -49,6 +49,8 @@ angular.module('boodschapp')
             if (!inShoppingList) {
                 index.aantal = aantalProducten;
                 $scope.shoppingList.push(index);
+                //Afgevinkte producten onderaan de lijst houden als er nieuwe producten worden toegevoegd aan de lijst.
+                $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'done');
             } else {
                 for (var i = 0; i < $scope.shoppingList.length; i++) {
                     if ($scope.shoppingList[i].product == index.product) {

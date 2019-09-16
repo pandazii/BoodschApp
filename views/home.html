@@ -1,4 +1,7 @@
 <div class="product-list">
+    <button type="button" class="btn btn-secondary"
+        ng-click="sortProductsByName()" style="margin: 20px;">Sorteer op naam</button>
+    <br>
     <div class="card" ng-repeat="x in producten track by $index">
         <img style="bottom: 200px; position:absolute"
             src="{{x.product_afbeelding}}" width="50%">
@@ -16,9 +19,9 @@
     <h3>Winkelwagen</h3>
     <table>
         <tr style="background-color: grey">
-            <th ng-click="sortShoppingListProductName()">Product
-                <img src="/content/sort.png" width="12px"></th>
-            <th ng-click="sortShoppingListProductPrice()">Totaal
+            <th ng-click="sortShoppingListByName()">Product
+                <img src="content/sort.png" width="12px"></th>
+            <th>Totaal
                 prijs</th>
             <th>Aantal</th>
         </tr>
@@ -27,7 +30,7 @@
             <td>&euro;&nbsp;{{x.prijs*x.aantal | number : 1}}</td>
             <td>{{x.aantal}}</td>
             <td><img ng-click="shoppingList.splice($index, 1)"
-                    src="/content/trash.png"
+                    src="content/trash.png"
                     width="24px" height="24px"></td>
             <td><input id="{{$index}}" ng-model="x.done"
                     ng-change="checkboxChanged()"

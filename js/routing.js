@@ -2,7 +2,7 @@ angular.module('boodschapp')
     .config(function ($routeProvider) {
         $routeProvider
             .when("/", {
-                templateUrl: "/views/home.html",
+                templateUrl: "home.html",
                 controller: 'homeController'
             })
     })

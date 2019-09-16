@@ -5,96 +5,97 @@ angular.module('boodschapp')
         $scope.shoppingList = [];
         $scope.strikedList = [];
         let shoppingListOrderd = false;
+        let productListOrderd = false;
 
         //Model - Producten
         $scope.producten = [{
                 "product": "Banaan",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/banaan.png",
+                "product_afbeelding": "content/producten/banaan.png",
                 "done": false
             },
             {
                 "product": "Kiwi",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/kiwi.png",
+                "product_afbeelding": "content/producten/kiwi.png",
                 "done": false
             },
             {
                 "product": "Appel",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/appel.png",
+                "product_afbeelding": "content/producten/appel.png",
                 "done": false
             },
             {
                 "product": "Peer",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/peer.png",
+                "product_afbeelding": "content/producten/peer.png",
                 "done": false
             },
             {
                 "product": "Meloen",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/meloen.png",
+                "product_afbeelding": "content/producten/meloen.png",
                 "done": false
             },
             {
                 "product": "Banaan",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/banaan.png",
+                "product_afbeelding": "content/producten/banaan.png",
                 "done": false
             },
             {
                 "product": "Kiwi",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/kiwi.png",
+                "product_afbeelding": "content/producten/kiwi.png",
                 "done": false
             },
             {
                 "product": "Appel",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/appel.png",
+                "product_afbeelding": "content/producten/appel.png",
                 "done": false
             },
             {
                 "product": "Peer",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/peer.png",
+                "product_afbeelding": "content/producten/peer.png",
                 "done": false
             },
             {
                 "product": "Meloen",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/meloen.png",
+                "product_afbeelding": "content/producten/meloen.png",
                 "done": false
             },
             {
                 "product": "Banaan",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/banaan.png",
+                "product_afbeelding": "content/producten/banaan.png",
                 "done": false
             },
             {
                 "product": "Kiwi",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/kiwi.png",
+                "product_afbeelding": "content/producten/kiwi.png",
                 "done": false
             },
             {
                 "product": "Appel",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/appel.png",
+                "product_afbeelding": ".content/producten/appel.png",
                 "done": false
             },
             {
                 "product": "Peer",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/peer.png",
+                "product_afbeelding": "content/producten/peer.png",
                 "done": false
             },
             {
                 "product": "Meloen",
                 "prijs": 0.99,
-                "product_afbeelding": "/content/producten/meloen.png",
+                "product_afbeelding": "content/producten/meloen.png",
                 "done": false
             }
         ]
@@ -112,7 +113,7 @@ angular.module('boodschapp')
 
 
         // sorteer producten in de boodschappenlijst op product naam
-        $scope.sortShoppingListProductName = function () {
+        $scope.sortShoppingListByName = function () {
             if (shoppingListOrderd) {
                 $scope.shoppingList = $filter('orderBy')($scope.shoppingList, '-product');
                 $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'done');
@@ -121,6 +122,16 @@ angular.module('boodschapp')
                 $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'product');
                 $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'done');
                 shoppingListOrderd = true;
+            }
+        }
+
+        $scope.sortProductsByName = function () {
+            if (productListOrderd) {
+                $scope.producten = $filter('orderBy')($scope.producten, '-product');
+                productListOrderd = false;
+            } else {
+                $scope.producten = $filter('orderBy')($scope.producten, 'product');
+                productListOrderd = true;
             }
         }
 

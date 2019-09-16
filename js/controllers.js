@@ -83,7 +83,7 @@ angular.module('boodschapp')
             {
                 "product": "Appel",
                 "prijs": 0.99,
-                "product_afbeelding": ".content/producten/appel.png",
+                "product_afbeelding": "content/producten/appel.png",
                 "done": false
             },
             {

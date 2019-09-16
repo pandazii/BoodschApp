@@ -1,21 +1,116 @@
 angular.module('boodschapp')
-    .controller('homeController', function ($scope, $http, $filter) {
+    .controller('homeController', function ($scope, $filter) {
 
+        // Controller variablen
         $scope.shoppingList = [];
         $scope.strikedList = [];
-        var shoppingListOrderd = false;
+        let shoppingListOrderd = false;
 
-        getProducts();
+        //Model - Producten
+        $scope.producten = [{
+                "product": "Banaan",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/banaan.png",
+                "done": false
+            },
+            {
+                "product": "Kiwi",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/kiwi.png",
+                "done": false
+            },
+            {
+                "product": "Appel",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/appel.png",
+                "done": false
+            },
+            {
+                "product": "Peer",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/peer.png",
+                "done": false
+            },
+            {
+                "product": "Meloen",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/meloen.png",
+                "done": false
+            },
+            {
+                "product": "Banaan",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/banaan.png",
+                "done": false
+            },
+            {
+                "product": "Kiwi",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/kiwi.png",
+                "done": false
+            },
+            {
+                "product": "Appel",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/appel.png",
+                "done": false
+            },
+            {
+                "product": "Peer",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/peer.png",
+                "done": false
+            },
+            {
+                "product": "Meloen",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/meloen.png",
+                "done": false
+            },
+            {
+                "product": "Banaan",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/banaan.png",
+                "done": false
+            },
+            {
+                "product": "Kiwi",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/kiwi.png",
+                "done": false
+            },
+            {
+                "product": "Appel",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/appel.png",
+                "done": false
+            },
+            {
+                "product": "Peer",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/peer.png",
+                "done": false
+            },
+            {
+                "product": "Meloen",
+                "prijs": 0.99,
+                "product_afbeelding": "/content/producten/meloen.png",
+                "done": false
+            }
+        ]
 
-        function getProducts() {
-            $http.get('models/producten.json').then(function (data) {
-                $scope.producten = data.data;
 
-            }).catch(function (error) {
-                console.log("fout bij het ophalen van de producten" + error)
-            })
-        }
-        
+        // Werkt niet bij static websites
+        // function getProducts() {
+        //     $http.get('models/producten.json').then(function (data) {
+        //         $scope.producten = data.data;
+
+        //     }).catch(function (error) {
+        //         console.log("fout bij het ophalen van de producten" + error)
+        //     })
+        // }
+
+
         // sorteer producten in de boodschappenlijst op product naam
         $scope.sortShoppingListProductName = function () {
             if (shoppingListOrderd) {
@@ -38,24 +133,26 @@ angular.module('boodschapp')
 
             let inShoppingList = false;
 
-            // Controle of het product al bestaat in de boodschappenlijst.
-            for (var i = 0; i < $scope.shoppingList.length; i++) {
-                if ($scope.shoppingList[i].product == index.product) {
-                    inShoppingList = true;
-                }
-            }
-
-            // Wanneer het product niet in de lijst voorkomt, voeg dan toe aan de lijst. Indien het product voorkomt in de lijst, pas dan alleen het aantal van het product aan.
-            if (!inShoppingList) {
-                index.aantal = aantalProducten;
-                $scope.shoppingList.push(index);
-                //Afgevinkte producten onderaan de lijst houden als er nieuwe producten worden toegevoegd aan de lijst.
-                $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'done');
-            } else {
+            if (aantalProducten != null) {
+                // Controle of het product al bestaat in de boodschappenlijst.
                 for (var i = 0; i < $scope.shoppingList.length; i++) {
                     if ($scope.shoppingList[i].product == index.product) {
-                        $scope.shoppingList[i].aantal += aantalProducten
+                        inShoppingList = true;
+                    }
+                }
 
+                // Wanneer het product niet in de lijst voorkomt, voeg dan toe aan de lijst. Indien het product voorkomt in de lijst, pas dan alleen het aantal van het product aan.
+                if (!inShoppingList) {
+                    index.aantal = aantalProducten;
+                    $scope.shoppingList.push(index);
+                    //Afgevinkte producten onderaan de lijst houden als er nieuwe producten worden toegevoegd aan de lijst.
+                    $scope.shoppingList = $filter('orderBy')($scope.shoppingList, 'done');
+                } else {
+                    for (var i = 0; i < $scope.shoppingList.length; i++) {
+                        if ($scope.shoppingList[i].product == index.product) {
+                            $scope.shoppingList[i].aantal += aantalProducten
+
+                        }
                     }
                 }
             }

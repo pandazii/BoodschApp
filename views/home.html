@@ -1,81 +1,38 @@
-<div class="products">
+<div class="product-list">
     <div class="card" ng-repeat="x in producten track by $index">
-        <!-- <img src="{{x.product_afbeelding}}" alt="Fruit"> -->
-        <h1>{{x.product}}</h1>
-        <p class="price">{{x.prijs}}</p>
-        <p>{{x.beschrijving}}</p>
-        Aantal:&nbsp;<input type="number" min="1" max="40"
-            ng-model="aantal">
-        <p><button type="button" ng-click="addProductToShoppingList(x, aantal)">Toevoegen</button></p>
+        <img style="bottom: 200px; position:absolute"
+            src="{{x.product_afbeelding}}" width="50%">
+        <h4 style="bottom: 150px; position:absolute">{{x.product}}</h4>
+        <p style="bottom: 110px; position:absolute">&euro;{{x.prijs}}</p>
+        <p style="bottom: 80px; position:absolute">Aantal:</p>
+        <input type="number" min="1" max="40"
+            ng-model="aantal" style="width: 100px; bottom: 60px;
+            position:absolute">
+        <button type="button" ng-click="addProductToShoppingList(x,
+            aantal)">Toevoegen</button>
     </div>
 </div>
-
-<div class="product-list">
-
-    <h2>Boodschappen lijst</h2>
-
-    <div ng-repeat="x in shoppingList track by $index">
-        <div ng-if="x.done == false">
-            <label for="{{$index}}" class="done-{{x.done}}">{{x.product}}</label>
-            {{x.aantal}}
-            {{x.prijs*x.aantal | number : 2}}
-            <svg ng-click="shoppingList.splice($index, 1)"
-                style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path fill="#000000"
-                    d="M3,16.74L7.76,12L3,7.26L7.26,3L12,7.76L16.74,3L21,7.26L16.24,12L21,16.74L16.74,21L12,16.24L7.26,21L3,16.74M12,13.41L16.74,18.16L18.16,16.74L13.41,12L18.16,7.26L16.74,5.84L12,10.59L7.26,5.84L5.84,7.26L10.59,12L5.84,16.74L7.26,18.16L12,13.41Z"
-                    />
-                </svg>
-                <input id="{{$index}}" ng-model="x.done" type="checkbox">
-            </div>
-
-            <br>
-
-            <div ng-if="x.done == true">
-                <input type="checkbox" ng-model="x.done">
-                <label for="{{$index}}" class="striked">{{x.product}}</label>
-                {{x.aantal}}
-                {{x.prijs*x.aantal | number : 2}}
-                <svg ng-click="shoppingList.splice($index, 1)"
-                    style="width:24px;height:24px" viewBox="0 0 24 24">
-                    <path fill="#000000"
-                        d="M3,16.74L7.76,12L3,7.26L7.26,3L12,7.76L16.74,3L21,7.26L16.24,12L21,16.74L16.74,21L12,16.24L7.26,21L3,16.74M12,13.41L16.74,18.16L18.16,16.74L13.41,12L18.16,7.26L16.74,5.84L12,10.59L7.26,5.84L5.84,7.26L10.59,12L5.84,16.74L7.26,18.16L12,13.41Z"
-                        />
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <!-- <div class="product-list">
-            <h2>Fruit producten</h2>
-            <table>
-                <tr>
-                    <th>Product</th>
-                    <th>Prijs p. stuk</th>
-                    <th>Aantal</th>
-
-                </tr>
-                <tr ng-repeat="x in producten track by $index">
-                    <td>{{x.product}}</td>
-                    <td>&euro;{{x.prijs}}</td>
-                    <td><input type="number" value="1" min="1" max="40"
-                            ng-model="aantal"></td>
-                    <td><svg ng-click="addProductToShoppingList(x, aantal)"
-                            style="width:24px;height:24px;" viewBox="0 0 24
-                            24">
-                            <path fill="#000000"
-                                d="M11,9H13V6H16V4H13V1H11V4H8V6H11M7,18A2,2 0
-                                0,0
-                                5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20A2,2 0 0,0
-                                7,18M17,18A2,2 0 0,0 15,20A2,2 0 0,0 17,22A2,2 0
-                                0,0
-                                19,20A2,2 0 0,0
-                                17,18M7.17,14.75L7.2,14.63L8.1,13H15.55C16.3,13
-                                16.96,12.59
-                                17.3,11.97L21.16,4.96L19.42,4H19.41L18.31,6L15.55,11H8.53L8.4,10.73L6.16,6L5.21,4L4.27,2H1V4H3L6.6,11.59L5.25,14.04C5.09,14.32
-                                5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42C7.29,15
-                                7.17,14.89 7.17,14.75Z" />
-                            </svg></td>
-                    </tr>
-                </table>
-
-            </div>-->
+<div class="shopping-list">
+    <h3>Winkelwagen</h3>
+    <table>
+        <tr style="background-color: grey">
+            <th ng-click="sortShoppingListProductName()">Product
+                <img src="/content/sort.png" width="12px"></th>
+            <th ng-click="sortShoppingListProductPrice()">Totaal
+                prijs</th>
+            <th>Aantal</th>
+        </tr>
+        <tr class="slideIn" ng-repeat="x in shoppingList track by $index">
+            <td for="{{$index}}" class="done-{{x.done}}">{{x.product}}</td>
+            <td>&euro;&nbsp;{{x.prijs*x.aantal | number : 1}}</td>
+            <td>{{x.aantal}}</td>
+            <td><img ng-click="shoppingList.splice($index, 1)"
+                    src="/content/trash.png"
+                    width="24px" height="24px"></td>
+            <td><input id="{{$index}}" ng-model="x.done"
+                    ng-change="checkboxChanged()"
+                    type="checkbox"></td>
+        </tr>
+    </table>
+    <p ng-if="shoppingList.length == 0">Uw winkelwagen is leeg</p>
+</div>

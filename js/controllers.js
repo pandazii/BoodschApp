@@ -7,6 +7,10 @@ angular.module('boodschapp')
         let shoppingListOrderd = false;
         let productListOrderd = false;
 
+        $(function () {
+            $('tbody').sortable();
+        });
+
         //Model - Producten
         $scope.producten = [{
                 "product": "Banaan",

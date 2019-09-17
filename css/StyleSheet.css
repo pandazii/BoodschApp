@@ -35,17 +35,6 @@ body {
     opacity: 0.7;
 }
 
-.products {
-    /* border: 1px solid black; */
-    overflow: hidden;
-    float: left;
-}
-
-.product-list {
-    /* border: 1px solid black; */
-    float: left;
-}
-
 .done-true {
     text-decoration: line-through;
     color: grey;
@@ -58,7 +47,6 @@ body {
 
 .product-list {
     float: left;
-    width: 60%;
 }
 
 .shopping-list {

@@ -1,3 +1,77 @@
+<br>
+<h2 style="color: grey;">Boodschappen lijstje</h2>
+<br>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product</th>
+            <th scope="col">Aantal</th>
+            <th scope="col">Prijs</th>
+            <th scope="col">Opmerking</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="slideIn" ng-repeat="x in shoppingList track by
+            $index">
+            <th scope="row">3</th>
+            <td for="{{$index}}" class="done-{{x.done}}">{{x.product}}</td>
+            <td></td>
+            <td>{{x.aantal}}</td>
+            <td><img ng-click="shoppingList.splice($index, 1)"
+                    src="content/trash.png"
+                    width="24px" height="24px"></td>
+            <td><input id="{{$index}}" ng-model="x.done"
+                    ng-change="checkboxChanged()"
+                    type="checkbox"></td>
+
+        </tr>
+        <tr>
+            <th scope="row">#</th>
+            <td>
+                <input type="text" class="form-control"
+                    placeholder="Product">
+            </td>
+            <td><input type="number" class="form-control"
+                    placeholder="Aantal" min="1" max="40"
+                    ng-model="aantal"></td>
+            <td><input type="text" class="form-control"
+                    placeholder="Prijs"></td>
+            <td><input type="text" class="form-control"
+                    placeholder="Opmerking"></td>
+            <td><button type="submit" class="btn btn-success">Voeg product toe</button></td>
+        </tr>
+    </tbody>
+</table>
+<!-- <form>
+    <div class="form-row">
+        <div class="col">
+            <input type="text" class="form-control"
+                placeholder="Product">
+        </div>
+        <div scope="col">
+            <input type="number" class="form-control"
+                placeholder="Aantal" min="1" max="40"
+                ng-model="aantal">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control"
+                placeholder="Prijs">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control"
+                placeholder="Opmerking">
+        </div>
+
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success">Voeg product toe</button>
+</form> -->
+<br>
+<hr width="95%">
+<br>
+<h2 style="color: grey;">Producten die je eerder hebt gekocht</h2>
 <div class="product-list">
     <button type="button" class="btn btn-secondary"
         ng-click="sortProductsByName()" style="margin: 20px;">Sorteer op naam</button>
@@ -11,31 +85,32 @@
         <input type="number" min="1" max="40"
             ng-model="aantal" style="width: 100px; bottom: 60px;
             position:absolute">
-        <button type="button" ng-click="addProductToShoppingList(x,
-            aantal)">Toevoegen</button>
+        <button type="submit" class="btn btn-success"
+            ng-click="addProductToShoppingList(x,
+            aantal)">Voeg toe</button>
     </div>
 </div>
-<div class="shopping-list">
-    <h3>Winkelwagen</h3>
-    <table>
-        <tr style="background-color: grey">
-            <th ng-click="sortShoppingListByName()">Product
-                <img src="content/sort.png" width="12px"></th>
-            <th>Totaal
-                prijs</th>
-            <th>Aantal</th>
-        </tr>
-        <tr class="slideIn" ng-repeat="x in shoppingList track by $index">
-            <td for="{{$index}}" class="done-{{x.done}}">{{x.product}}</td>
-            <td>&euro;&nbsp;{{x.prijs*x.aantal | number : 1}}</td>
-            <td>{{x.aantal}}</td>
-            <td><img ng-click="shoppingList.splice($index, 1)"
-                    src="content/trash.png"
-                    width="24px" height="24px"></td>
-            <td><input id="{{$index}}" ng-model="x.done"
-                    ng-change="checkboxChanged()"
-                    type="checkbox"></td>
-        </tr>
-    </table>
-    <p ng-if="shoppingList.length == 0">Uw winkelwagen is leeg</p>
-</div>
+<!-- <div class="shopping-list">
+            <h3>Boodschappen lijst</h3>
+            <table>
+                <tr style="background-color: grey">
+                    <th ng-click="sortShoppingListByName()">Product
+                        <img src="content/sort.png" width="12px"></th>
+                    <th>Totaal
+                        prijs</th>
+                    <th>Aantal</th>
+                </tr>
+                <tr class="slideIn" ng-repeat="x in shoppingList track by $index">
+                    <td for="{{$index}}" class="done-{{x.done}}">{{x.product}}</td>
+                    <td>&euro;&nbsp;{{x.prijs*x.aantal | number : 1}}</td>
+                    <td>{{x.aantal}}</td>
+                    <td><img ng-click="shoppingList.splice($index, 1)"
+                            src="content/trash.png"
+                            width="24px" height="24px"></td>
+                    <td><input id="{{$index}}" ng-model="x.done"
+                            ng-change="checkboxChanged()"
+                            type="checkbox"></td>
+                </tr>
+            </table>
+            <p ng-if="shoppingList.length == 0">Uw winkelwagen is leeg</p>
+        </div> -->

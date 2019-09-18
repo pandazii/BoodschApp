@@ -39,6 +39,14 @@ angular.module('boodschapp')
             },
         ]
 
+        $scope.addFavoriteProduct = function(favoName){
+            $scope.producten.push({"naam": favoName});
+        }
+
+        $scope.savePersonalName = function(name){
+                $scope.personalName = name;
+        }
+
         // sorteer producten in de boodschappenlijst op product naam
         $scope.orderShoppingListByName = function () {
             if (listOrdered) {

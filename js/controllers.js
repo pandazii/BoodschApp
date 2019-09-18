@@ -96,12 +96,10 @@ angular.module('boodschapp')
                         }
                     }
                 }
-
                 // Input velden resetten
-                $scope.naam = "";
-                $scope.aantal = "";
-                $scope.opmerking = "";
-
+                $scope.naam = null;
+                $scope.aantal = null;
+                $scope.opmerking = null;
             }
         }
     })

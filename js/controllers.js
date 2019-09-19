@@ -6,10 +6,6 @@ angular.module('boodschapp')
         let listOrdered = false;
         let favoriteProductsOrdered = false;
 
-        $(function () {
-            $('tbody').sortable();
-        });
-
         //Model - Producten
         $scope.producten = [{
                 "naam": "Banaan",

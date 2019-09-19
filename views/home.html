@@ -1,14 +1,14 @@
 <br>
-<h3 ng-if="personalName.length> 0" style="color: grey;">{{personalName}}'s
-    boodschappen lijst</h3>
+<h3 ng-if="personalName.length> 0" style="color: grey;"><img src="content/checklist.png" style="width: 40px;">&nbsp;{{personalName}}'s&nbsp;
+    boodschappenlijst</h3>
 <h3 ng-if="personalName == null || personalName.length == 0" style="color:
-    grey;">Boodschappen lijst</h3>
+    grey;"><img src="content/checklist.png" style="width: 40px;">&nbsp;Boodschappenlijst</h3>
 <br>
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Product</th>
-            <th scope="col">Aantal</th>
+            <th scope="col" style="width: 30%">Product</th>
+            <th scope="col" style="width: 15%;">Aantal</th>
             <th scope="col">Opmerking</th>
             <th colspan="4"></th>
         </tr>
@@ -36,11 +36,11 @@
             </td>
             <td><button type="button" class="btn
                     btn-warning"
-                    ng-click="editProduct= true" ng-show="!editProduct">Bewerken</button></td>
+                    ng-click="editProduct= true" >Bewerken</button></td>
             <td><button type="button" class="btn btn-warning"
-                    ng-click="editProduct= false" ng-show="editProduct">&nbsp;Opslaan&nbsp;</button></td>
+                    ng-click="editProduct= false" >&nbsp;Opslaan&nbsp;</button></td>
             <td style="vertical-align:middle;"><input type="checkbox"
-                    style="width:20px; height:20px;" id="{{$index}}"
+                    style="width:25px; height:25px;" id="{{$index}}"
                     ng-model="x.done" ng-change="checkboxChanged()"></td>
 
         </tr>
@@ -121,7 +121,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Naam</label>
                         <input type="text" class="form-control"
-                            placeholder="Naam" ng-model="name">
+                            placeholder="Naam" ng-model="personalName">
                     </div>
                 </form>
             </div>
@@ -130,7 +130,7 @@
                     data-dismiss="modal">Afsluiten</button>
                 <button type="button" class="btn btn-success"
                     data-dismiss="modal"
-                    ng-click="savePersonalName(name)">Opslaan</button>
+                    >Opslaan</button>
             </div>
         </div>
     </div>

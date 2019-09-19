@@ -39,12 +39,25 @@ angular.module('boodschapp')
             },
         ]
 
-        $scope.addFavoriteProduct = function(favoName){
-            $scope.producten.push({"naam": favoName});
+        $scope.addFavoriteProduct = function (favoName) {
+
+            $scope.productInList = false;
+
+            for (let i = 0; i < $scope.producten.length; i++) {
+                if ($scope.producten[i].naam == favoName) {
+                    $scope.productInList = true;
+                }
+            }
+
+            if (!$scope.productInList) {
+                $scope.producten.push({
+                    "naam": favoName
+                });
+            }
         }
 
-        $scope.savePersonalName = function(name){
-                $scope.personalName = name;
+        $scope.savePersonalName = function (name) {
+            $scope.personalName = name;
         }
 
         // sorteer producten in de boodschappenlijst op product naam

@@ -4,6 +4,7 @@ angular
     // Controller variablen
     $scope.list = [];
     $scope.savedLists = [];
+    $scope.isInProductList = false;
 
 
     //Model - Favoriete producten
@@ -50,14 +51,14 @@ angular
     }
 
     $scope.loadSavedList = function (savedProducts) {
-      console.log(savedProducts.list)
       $scope.list = [];
       $scope.list = savedProducts.list;
-      console.log($scope.list)
+      $scope.listName = savedProducts.beschrijving;
+      console.log($scope.listName)
     }
 
     $scope.addFavoriteProduct = function (favoriteProductName) {
-      $scope.isInProductList = false;
+
 
       for (let i = 0; i < $scope.producten.length; i++) {
         if ($scope.producten[i].naam == favoriteProductName) {

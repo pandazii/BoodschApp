@@ -1,10 +1,11 @@
-<br>
-<h3 ng-if="personalName.length> 0" style="color: grey;"><img
-        src="content/checklist.png" style="width: 40px;">&nbsp;{{personalName}}'s
-    boodschappenlijst</h3>
-<h3 ng-if="personalName == null || personalName.length == 0" style="color:
-    grey;"><img src="content/checklist.png" style="width: 40px;">&nbsp;Boodschappenlijst</h3>
-<br>
+<br />
+<h3 ng-if="personalName.length> 0">
+    <img src="content/checklist.png" />&nbsp;{{personalName}}'s boodschappenlijst
+</h3>
+<h3 ng-if="personalName == null || personalName.length == 0">
+    <img src="content/checklist.png" />&nbsp;Boodschappenlijst
+</h3>
+<br />
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -18,102 +19,119 @@
         <tr class="fadeIn" ng-repeat="x in list track by
             $index">
             <!-- Boodschappen lijst met producten -->
-            <td ng-if="!editProduct" for="{{$index}}" class="done-{{x.done}}">{{x.naam}}</td>
-            <td ng-if="editProduct"><input id="inputSuccess" type="text"
-                    class="form-control" placeholder="Product"
-                    ng-model="x.naam"></td>
-            <td ng-if="!editProduct">{{x.aantal}}</td>
-            <td ng-if="editProduct"><input type="number" class="form-control"
-                    placeholder="Aantal" min="1"
-                    ng-model="x.aantal"></td>
-            <td ng-if="!editProduct">{{x.opmerking}}</td>
-            <td ng-if="editProduct"><input type="text" class="form-control"
-                    placeholder="Opmerking"
-                    ng-model="x.opmerking"></td>
+            <td ng-if="!editProduct" for="{{ $index }}" class="done-{{ x.done}}">
+                {{::x.naam }}
+            </td>
+            <td ng-if="editProduct">
+                <input id="inputSuccess" type="text" class="form-control" placeholder="Product" ng-model="x.naam" />
+            </td>
+
+            <td ng-if="!editProduct">{{::x.aantal }}</td>
+            <td ng-if="editProduct">
+                <input type="number" class="form-control" placeholder="Aantal" min="1" ng-model="x.aantal" />
+            </td>
+
+            <td ng-if="!editProduct">{{::x.opmerking }}</td>
+            <td ng-if="editProduct">
+                <input type="text" class="form-control" placeholder="Opmerking" ng-model="x.opmerking" />
+            </td>
 
             <!-- Form buttons -->
-            <td> <button type="button" class="btn btn-danger"
-                    ng-click="list.splice($index, 1)">Verwijderen</button>
+            <td>
+                <button type="button" class="btn btn-danger" ng-click="list.splice($index, 1)">
+                    Verwijderen
+                </button>
             </td>
-            <td><button type="button" class="btn
-                    btn-warning"
-                    ng-click="editProduct= true">Bewerken</button></td>
-            <td><button type="button" class="btn btn-warning"
-                    ng-click="editProduct= false">&nbsp;Opslaan&nbsp;</button></td>
-            <td style="vertical-align:middle;"><input type="checkbox"
-                    style="width:25px; height:25px;" id="{{$index}}"
-                    ng-model="x.done" ng-change="checkboxChanged()"></td>
-
+            <td>
+                <button type="button" class="btn
+                    btn-warning" ng-click="editProduct= true">
+                    Bewerken
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning" ng-click="editProduct= false">
+                    &nbsp;Opslaan&nbsp;
+                </button>
+            </td>
+            <td style="vertical-align:middle;">
+                <input type="checkbox" style="width:25px; height:25px;" id="{{$index}}" ng-model="x.done"
+                    ng-change="listCheckboxChanged()" />
+            </td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
             <td>
-                <input id="inputSuccess" type="text" class="form-control"
-                    placeholder="Product" ng-model="naam">
-                <small id="emailHelp" class="form-text text-muted"
-                    style="color:red !important">*Dit veld is
+                <input id="inputSuccess" type="text" class="form-control" placeholder="Product" ng-model="naam" />
+                <small id="emailHelp" class="form-text text-muted" style="color:red !important">*Dit veld is
                     verplicht</small>
             </td>
-            <td><input type="number" class="form-control" placeholder="Aantal"
-                    min="1" ng-model="aantal"
-                    ng-model="aantal">
-                <small id="emailHelp" class="form-text text-muted"
-                    style="color:red !important">*Dit veld is
-                    verplicht</small></td>
-            <td><input type="text" class="form-control" placeholder="Opmerking"
-                    ng-model="opmerking">
+            <td>
+                <input type="number" class="form-control" placeholder="Aantal" min="1" ng-model="aantal"
+                    ng-model="aantal" />
+                <small id="emailHelp" class="form-text text-muted" style="color:red !important">*Dit veld is
+                    verplicht</small>
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="Opmerking" ng-model="opmerking" />
                 <small id="emailHelp" class="form-text text-muted">Niet
                     verplicht</small>
             </td>
             <td>
-                <button type="submit" class="btn btn-success"
-                    ng-click="addProductToList(naam, aantal,
-                    opmerking)">Toevoegen&nbsp;</button>
+                <button type="submit" class="btn btn-success" ng-click="addProductToList(naam, aantal,
+                    opmerking)">
+                    Toevoegen&nbsp;
+                </button>
             </td>
         </tr>
     </tfoot>
 </table>
-<br>
-<hr>
-<br>
+<button style="margin: 10px" type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-save-list"
+    ng-click="beschrijving = ''">
+    Opslaan als nieuwe boodschappenlijst
+</button>
+&nbsp;
+<button style="float: right;" type="button" class="btn btn-success" ng-click="list = [];">
+    Clear
+</button>
+<br />
+<hr />
+<br />
 <h3 style="color: grey;">Jouw favoriete producten</h3>
-<button type="button" class="btn btn-success" data-toggle="modal"
-    data-target="#modal-products">
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-products">
     Voeg product toe
 </button>
-<button type="button" class="btn btn-dark"
-    ng-click="orderFavoriteProductsByName()" style="margin: 20px;">Sorteer op
-    naam</button>
-<br>
+<button type="button" class="btn btn-dark" ng-click="orderFavoriteProductsByName()" style="margin: 20px;">
+    Sorteer op naam
+</button>
+<br />
 <div class="card" ng-repeat="x in producten track by $index">
-    <img ng-click="producten.splice($index, 1)" src="content/x-button.png"
-        style="bottom: 180px; right: 10; top: 10;
-        position:absolute" width="11%">
+    <img ng-click="producten.splice($index, 1)" src="content/x-button.png" style="bottom: 180px; right: 10; top: 10;
+        position:absolute" width="11%" />
     <img ng-if="x.product_afbeelding != null" style="bottom: 160px;
-        position:absolute" src="{{x.product_afbeelding}}" width="50%">
+        position:absolute" src="{{ x.product_afbeelding }}" width="50%" />
     <img ng-if="x.product_afbeelding == null" style="bottom: 165px;
-        position:absolute" src="content/no-image.png" width="50%">
-    <h4 style="bottom: 120px; position:absolute">{{x.naam}}</h4>
+        position:absolute" src="content/no-image.png" width="50%" />
+    <h4 style="bottom: 120px; position:absolute">{{ x.naam }}</h4>
     <p style="bottom: 80px; position:absolute">Aantal:</p>
     <input type="number" min="1" max="40" ng-model="aantalFav" style="width:
         100px; bottom: 60px;
-        position:absolute">
-    <button type="submit" class="btn btn-success"
-        ng-click="addProductToList(x.naam, aantalFav)" style="width: 80%;">Toevoegen</button>
+        position:absolute" />
+    <button type="submit" class="btn btn-success" ng-click="addProductToList(x.naam, aantalFav)" style="width: 80%;">
+        Toevoegen
+    </button>
 </div>
 
-<!-- Modal Instellingen -->
-<div class="modal fade" id="modal-settings" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle"
+<!-- Modal - Instellingen -->
+<div class="modal fade" id="modal-settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Persoonlijke
-                    instellingen</h5>
-                <button type="button" class="close" data-dismiss="modal"
-                    aria-label="Close">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Persoonlijke instellingen
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -121,32 +139,102 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Naam</label>
-                        <input type="text" class="form-control"
-                            placeholder="Naam" ng-model="personalName">
+                        <input type="text" class="form-control" placeholder="Naam" ng-model="personalName" />
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    data-dismiss="modal">Afsluiten</button>
-                <button type="button" class="btn btn-success"
-                    data-dismiss="modal">Opslaan</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Afsluiten
+                </button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    Opslaan
+                </button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal Voeg favoriete product toe -->
-<div class="modal fade" id="modal-products" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle"
+<!-- Modal - Lijst opslaan -->
+<div class="modal fade" id="modal-save-list" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Voeg
-                    favoriete product toe</h5>
-                <button type="button" class="close" data-dismiss="modal"
-                    aria-label="Close">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Boodschappenlijst opslaan
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Naam" ng-model="beschrijving" />
+                        <small id="emailHelp" class="form-text text-muted">Naam van boodschappenlijst</small>
+                        <br>
+                        <input type="date" class="form-control" placeholder="Datum" ng-model="datum" />
+                        <small id="emailHelp" class="form-text text-muted">Datum van boodschappen doen</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Afsluiten
+                </button>
+                <button type="button" class="btn btn-success" data-dismiss="modal"
+                    ng-click="saveList(beschrijving, datum)">
+                    Opslaan
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Boodschappenlijstjes -->
+<div class="modal fade" id="modal-saved-lists" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Opgeslagen boodschappenlijstjes
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group" ng-repeat="list in savedLists">
+                        <label for="exampleInputEmail1">{{list.beschrijving}}</label>&nbsp;-&nbsp;
+                        <label for="exampleInputEmail1">{{list.datum}}</label>
+                        &nbsp;&nbsp;
+                        <img src="content/eye-open.png" style="width: 20px;" ng-click="loadSavedList(list)"
+                            data-dismiss="modal">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Afsluiten
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Favoriete producten toevoegen -->
+<div class="modal fade" id="modal-products" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Voeg favoriete product toe
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -154,19 +242,20 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Naam</label>
-                        <input type="text" class="form-control"
-                            placeholder="Naam" ng-model="favoName">
+                        <input type="text" class="form-control" placeholder="Naam" ng-model="favoName" />
                         <small id="emailHelp" class="form-text text-muted">Voer
                             productnaam in</small>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    data-dismiss="modal">Afsluiten</button>
-                <button type="button" class="btn btn-success"
-                    data-dismiss="modal"
-                    ng-click="addFavoriteProduct(favoName)">Voeg toe</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Afsluiten
+                </button>
+                <button type="button" class="btn btn-success" data-dismiss="modal"
+                    ng-click="addFavoriteProduct(favoName)">
+                    Voeg toe
+                </button>
             </div>
         </div>
     </div>

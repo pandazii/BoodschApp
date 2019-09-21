@@ -59,12 +59,12 @@
     <tfoot>
         <tr>
             <td>
-                <input id="inputSuccess" type="text" class="form-control" placeholder="Product" ng-model="naam" />
+                <input id="inputSuccess" type="text" class="form-control border-danger" placeholder="Product" ng-model="naam" />
                 <small id="emailHelp" class="form-text text-muted" style="color:red !important">*Dit veld is
                     verplicht</small>
             </td>
             <td>
-                <input type="number" class="form-control" placeholder="Aantal" min="1" ng-model="aantal"
+                <input type="number" class="form-control border-danger" placeholder="Aantal" min="1" ng-model="aantal"
                     ng-model="aantal" />
                 <small id="emailHelp" class="form-text text-muted" style="color:red !important">*Dit veld is
                     verplicht</small>
@@ -83,19 +83,20 @@
         </tr>
     </tfoot>
 </table>
-<button style="margin: 10px" type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-save-list"
+<button style="margin: 10px" type="button" class="btn btn-md btn-outline-secondary" data-toggle="modal" data-target="#modal-save-list"
     ng-click="beschrijving = ''">
-    Opslaan als nieuwe boodschappenlijst
+    Opslaan als nieuw boodschappenlijstje
 </button>
 &nbsp;
-<button style="float: right;" type="button" class="btn btn-success" ng-click="list = [];">
+<button style="float: right;" type="button" class="btn btn-danger" ng-click="list = []; listName = ''">
     Clear
 </button>
 <br />
 <hr />
 <br />
-<h3 style="color: grey;">Jouw favoriete producten</h3>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-products">
+<h3 style="color: grey; margin-left: 20px">Favoriete producten</h3>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-products"
+    style="margin-left: 20px;">
     Voeg product toe
 </button>
 <button type="button" class="btn btn-dark" ng-click="orderFavoriteProductsByName()" style="margin: 20px;">
@@ -118,7 +119,16 @@
         Toevoegen
     </button>
 </div>
-
+<p style="clear: both"></p>
+<div class="jumbotron jumbotron-fluid" style="clear: both; margin-top: 50px;">
+    <div class="container">
+        <img src="content/logo_image.png" style="width: 60px;">
+        <h1 class="display-4">BoodschApp</h1>
+        <p class="lead">Het doen van boodschappen wordt met deze app nog eenvoudiger en sneller!</p>
+        <hr class="my-4">
+        <p>Made by Tony van Leeuwen</p>
+    </div>
+</div>
 <!-- Modal - Lijst opslaan -->
 <div class="modal fade" id="modal-save-list" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
@@ -178,6 +188,9 @@
                         <img src="content/eye-open.png" style="width: 20px;" ng-click="loadSavedList(list)"
                             data-dismiss="modal">
                     </div>
+                    <p ng-if="savedLists.length == 0">
+                        Je hebt nog geen boodschappenlijstjes opgeslagen
+                    </p>
                 </form>
             </div>
             <div class="modal-footer">
@@ -224,3 +237,37 @@
         </div>
     </div>
 </div>
+
+<!-- Modal - Info
+<div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    BoodschApp informatie
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <span aria-hidden="true">Gemaakt door: <b>Tony van Leeuwen</b></span>
+                        <br>
+                        <span aria-hidden="true">Intervisiegroep: <b>3</b> </span>
+                        <br>
+                        <hr>
+                        <span aria-hidden="true">Functionaliteiten</span>
+                        <br>
+                        <span aria-hidden="true">1.<b></b> </span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Afsluiten</button>
+            </div>
+        </div>
+    </div>
+</div> -->

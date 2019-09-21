@@ -32,7 +32,16 @@ angular
         naam: "Druiven"
       },
       {
-        naam: "Grapefruit"
+        naam: "Mandarijn"
+      },
+      {
+        naam: "Watermeloen"
+      },
+      {
+        naam: "Bessen "
+      },
+      {
+        naam: "Junami"
       }
     ];
 

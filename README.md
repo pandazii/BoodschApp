@@ -4,7 +4,15 @@ Tony van Leeuwen
 BoodschApp Web URL:	 	https://www.boodschapp.it
 GIT Repo(Private):		https://github.com/pandazii/BoodschApp
 
-Gebruikte bronnen
+Externa libaries:
+- Bootstrap
+- Jquery(Bootstrap)
+- AngularJS routing
+- AngularJS ui-sortable
+- Moment
+
+
+Gebruikte bronnen:
 
 Code:
 - Stackoverflow.com

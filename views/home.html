@@ -12,23 +12,24 @@
             <th colspan="4"></th>
         </tr>
     </thead>
-    <tbody ui-sortable ng-model="list">
+    <tbody ui-sortable="sortableOptions">
         <tr class="fadeIn" ng-repeat="x in list track by
             $index">
             <!-- Boodschappen lijst met producten -->
-            <td ng-if="!editProduct" for="{{$index }}" class="done-{{x.done}}">
-                {{::x.naam }}
+            <td ng-if="!editProduct" for="{{$index}}" class="done-{{x.done}}">
+                <img src="content/drag-drop.jpg" style="width: 20px;">
+                {{x.naam}}
             </td>
             <td ng-if="editProduct">
                 <input id="inputSuccess" type="text" class="form-control" placeholder="Product" ng-model="x.naam" />
             </td>
 
-            <td ng-if="!editProduct">{{::x.aantal }}</td>
+            <td ng-if="!editProduct">{{x.aantal}}</td>
             <td ng-if="editProduct">
                 <input type="number" class="form-control" placeholder="Aantal" min="1" ng-model="x.aantal" />
             </td>
 
-            <td ng-if="!editProduct">{{::x.opmerking }}</td>
+            <td ng-if="!editProduct">{{x.opmerking}}</td>
             <td ng-if="editProduct">
                 <input type="text" class="form-control" placeholder="Opmerking" ng-model="x.opmerking" />
             </td>
@@ -59,7 +60,8 @@
     <tfoot>
         <tr>
             <td>
-                <input id="inputSuccess" type="text" class="form-control border-danger" placeholder="Product" ng-model="naam" />
+                <input id="inputSuccess" type="text" class="form-control border-danger" placeholder="Product"
+                    ng-model="naam" />
                 <small id="emailHelp" class="form-text text-muted" style="color:red !important">*Dit veld is
                     verplicht</small>
             </td>
@@ -83,13 +85,13 @@
         </tr>
     </tfoot>
 </table>
-<button style="margin: 10px" type="button" class="btn btn-md btn-outline-secondary" data-toggle="modal" data-target="#modal-save-list"
-    ng-click="beschrijving = ''">
+<button style="margin: 10px" type="button" class="btn btn-md btn-outline-secondary" data-toggle="modal"
+    data-target="#modal-save-list" ng-click="beschrijving = ''">
     Opslaan als nieuw boodschappenlijstje
 </button>
 &nbsp;
 <button style="float: right;" type="button" class="btn btn-danger" ng-click="list = []; listName = ''">
-    Clear
+    Leeg lijst
 </button>
 <br />
 <hr />
@@ -104,8 +106,8 @@
 </button>
 <br />
 <div class="card" ng-repeat="x in producten track by $index">
-    <img ng-click="producten.splice($index, 1)" src="content/x-button.png" style="bottom: 180px; right: 10; top: 10;
-        position:absolute" width="11%" />
+    <img ng-click="producten.splice($index, 1)" src="content/close.png" style="bottom: 180px; right: 10; top: 10;
+        position:absolute" width="7%" />
     <img ng-if="x.product_afbeelding != null" style="bottom: 160px;
         position:absolute" src="{{ x.product_afbeelding }}" width="50%" />
     <img ng-if="x.product_afbeelding == null" style="bottom: 165px;
@@ -115,7 +117,7 @@
     <input type="number" min="1" max="40" ng-model="aantalFav" style="width:
         100px; bottom: 60px;
         position:absolute" />
-    <button type="submit" class="btn btn-success" ng-click="addProductToList(x.naam, aantalFav)" style="width: 80%;">
+    <button type="submit" class="btn btn-success" ng-click="addProductToList(x.naam, aantalFav)" style="width: 70%;">
         Toevoegen
     </button>
 </div>
@@ -148,7 +150,7 @@
                         <input type="text" class="form-control" placeholder="Naam" ng-model="beschrijving" />
                         <small id="emailHelp" class="form-text text-muted">Naam van boodschappenlijst</small>
                         <br>
-                        <input type="date" class="form-control" placeholder="Datum" ng-model="datum" />
+                        <input type="date" class="form-control" placeholder="Datum" ng-model="datum" min="2019-09-22" />
                         <small id="emailHelp" class="form-text text-muted">Datum van boodschappen doen</small>
                     </div>
                 </form>
@@ -181,11 +183,13 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group" ng-repeat="list in savedLists">
+                    <div class="form-group" ng-repeat="list in savedLists track by $index">
                         <label for="exampleInputEmail1">{{list.beschrijving}}</label>&nbsp;-&nbsp;
                         <label for="exampleInputEmail1">{{list.datum}}</label>
                         &nbsp;&nbsp;
-                        <img src="content/eye-open.png" style="width: 20px;" ng-click="loadSavedList(list)"
+                        <img src="content/eye-open.png" style="width: 22px; margin-right: 10px;"
+                            ng-click="loadSavedList(list)" data-dismiss="modal">
+                        <img src="content/close.png" style="width: 16px;" ng-click="savedLists.splice($index, 1)"
                             data-dismiss="modal">
                     </div>
                     <p ng-if="savedLists.length == 0">
@@ -237,37 +241,3 @@
         </div>
     </div>
 </div>
-
-<!-- Modal - Info
-<div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">
-                    BoodschApp informatie
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <span aria-hidden="true">Gemaakt door: <b>Tony van Leeuwen</b></span>
-                        <br>
-                        <span aria-hidden="true">Intervisiegroep: <b>3</b> </span>
-                        <br>
-                        <hr>
-                        <span aria-hidden="true">Functionaliteiten</span>
-                        <br>
-                        <span aria-hidden="true">1.<b></b> </span>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Afsluiten</button>
-            </div>
-        </div>
-    </div>
-</div> -->

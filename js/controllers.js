@@ -45,6 +45,18 @@ angular
       }
     ];
 
+    //AngularJS sortable-uit werkend op tables fix, zie fix: https://github.com/angular-ui/ui-sortable/issues/237
+    var fixHelper = function (e, ui) {
+      ui.children().each(function () {
+        $(this).width($(this).width());
+      });
+      return ui;
+    };
+
+    $scope.sortableOptions = {
+      helper: fixHelper,
+    };
+
     $scope.saveList = function (beschrijving, datum) {
 
       let datum_format = moment(datum).format('DD MMM YYYY');
@@ -67,7 +79,6 @@ angular
     }
 
     $scope.addFavoriteProduct = function (favoriteProductName) {
-
 
       for (let i = 0; i < $scope.producten.length; i++) {
         if ($scope.producten[i].naam == favoriteProductName) {
@@ -107,6 +118,8 @@ angular
     $scope.addProductToList = function (naam, aantal, opmerking) {
       let inList = false;
 
+
+
       if (naam != null && aantal != null) {
         // Controle of het product al bestaat in de boodschappenlijst.
         for (var i = 0; i < $scope.list.length; i++) {
@@ -125,6 +138,7 @@ angular
           //Afgevinkte producten onderaan de lijst houden als er nieuwe producten worden toegevoegd aan de lijst.
           $scope.list = $filter("orderBy")($scope.list, "done");
         } else {
+          console.log(naam)
           for (var i = 0; i < $scope.list.length; i++) {
             if ($scope.list[i].naam == naam) {
               $scope.list[i].aantal += aantal;

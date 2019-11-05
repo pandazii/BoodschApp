@@ -7,7 +7,7 @@ GIT Repo(Private):		https://github.com/pandazii/BoodschApp
 
 Externa libaries
 - Bootstrap
-- Jquery(Bootstrap)
+- Jquery
 - AngularJS routing
 - AngularJS ui-sortable
 - Moment
